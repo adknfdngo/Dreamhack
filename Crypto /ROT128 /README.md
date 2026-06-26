@@ -1,20 +1,24 @@
 # [Crypto] ROT128
 
-1. Challenge overview
+## 1. Challenge overview
 - Category: Cryptography
 - Difficulty: C1
 - Objective: 1) analyze the encryption algorithm of the provided 'encfile'
              2) implement a decryption script using reverse operations
              3) restore the original flag image ('flag.png')
 
-2. Logic analysis
+---
+
+ ## 2. Logic analysis
 After analyzing the encryption mechanism -> each byte of original data was procesed as follows:
 1) original byte value (0-255) is converted into a 2-digit, uppercase hexadecimal string
 2) specific arithmetic shift (+128) is applied to obfuscate the value
 
 To recover original data, perform the exact inverse operation: '(encrypted_value - 128) % 256'.
 
-3. Decrypt script
+---
+
+## 3. Decrypt script
 This is the Python script I wrote to reverse the encryption logic. It reads 'encfile', performs the modular inverse subtraction, and outputs the recovered bytes into an image.
 
 ```python
